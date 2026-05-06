@@ -3,7 +3,7 @@
 // AULA 01: O CÓDIGO SPAGHETTI
 // ==========================================
 
-// 1. CONEXÃO COM O BANCO DE DADOS E CRIAÇÃO DA TABELA (vamos usar outro BD)
+// 1. CONEXÃO COM O BANCO DE DADOS E CRIAÇÃO DA TABELA
 $dbFile = __DIR__ . '/tasks.sqlite';
 $pdo = new PDO('sqlite:' . $dbFile);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -69,7 +69,7 @@ $tasks = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lt - um código todo seu</title>
+    <title>ljt - um código todo seu</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #000000; color: #0b3d00; display: flex; justify-content: center; padding-top: 50px; }
         .container { background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
