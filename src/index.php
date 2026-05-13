@@ -1,26 +1,34 @@
 <?php
-// Sistema de Autoloading Nativo (PSR-0 simplificado)
-spl_autoload_register(function ($class) {
-    $dirs = ['Model', 'Controller', 'View'];
-    foreach ($dirs as $dir) {
-        $file = __DIR__ . "/src/$dir/$class.php";
-        if (file_exists($file)) {
-            require_once $file;
-        }
-    }
-});
+// Substitua todo o bloco spl_autoload_register por:
+require_once __DIR__ . '/vendor/autoload.php';
 
-// 1. Conexão com o banco (Único lugar no sistema inteiro!)
+// Importe as classes que você vai instanciar
+use App\Model\Task;
+use App\Presenter\TaskPresenter;
+use App\View\TaskHtmlView;
+
 $pdo = new PDO('sqlite:' . __DIR__ . '/tasks.sqlite');
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-// 2. Roteamento básico
-$controller = new TaskController($pdo);
-$action = $_GET['action'] ?? 'index'; // Se não vier action, usa 'index'
+// 1. Instanciamos o Model
+$model = new Task($pdo);
 
-if (method_exists($controller, $action)) {
-    $controller->$action(); // Executa o método correspondente
+// 2. Instanciamos a View (que implementa TaskViewInterface)
+$view = new TaskHtmlView();
+
+// 3. Instanciamos o Presenter, injetando as dependências
+$presenter = new TaskPresenter($model, $view);
+
+// Roteamento
+$action = $_GET['action'] ?? 'index';
+
+if ($action === 'create') {
+    $presenter->create($_POST['title'] ?? '', $_POST['description'] ?? '', $_POST['due_date'] ?? '');
+} elseif ($action === 'complete') {
+    $presenter->complete($_GET['id']);
+} elseif ($action === 'delete') {
+    $presenter->delete($_GET['id']);
 } else {
-    echo "Página não encontrada 404";
+    $presenter->index();
 }
 ?>

@@ -1,5 +1,8 @@
+<?php namespace App\Model;
 
-<?php
+use PDO;
+use Exception;
+
 class Task {
     private $pdo;
 
