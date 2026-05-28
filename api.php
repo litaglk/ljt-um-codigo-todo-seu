@@ -2,6 +2,8 @@
 // api.php - O PHP agora é apenas um Provedor de Dados (API)
 require_once __DIR__ . '/src/Model/Task.php';
 
+use App\Model\Task;
+
 // Configuramos o cabeçalho para que o navegador entenda que estamos enviando JSON
 header('Content-Type: application/json');
 

@@ -3,7 +3,7 @@
         'name' => 'fatec/ljt-um-codigo-todo-seu',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8c8582894b4020c261f8dcf1a6d28b01ada5f2e3',
+        'reference' => 'a4179d9e5eda3646cc8dfaa7059ea320a3b145e1',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         'fatec/ljt-um-codigo-todo-seu' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8c8582894b4020c261f8dcf1a6d28b01ada5f2e3',
+            'reference' => 'a4179d9e5eda3646cc8dfaa7059ea320a3b145e1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
